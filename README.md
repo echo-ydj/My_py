@@ -19,6 +19,9 @@ git log --pretty=oneline  #一行显示
 git reset --hard 文件名
 
 #ssh 
+生成ssh
+ssh-keygen -t rsa -b 4096 -C "1165053882@qq.com"
+
 clip < ~/.ssh/id_rsa.pud
 路径
 C:\Users\asus\.ssh
@@ -36,3 +39,31 @@ git push --set -upstream origin 分支名
 git checkout 分支名
 #合并分支
 git merge 分支名
+
+
+
+
+问题 
+Commit failed - exit code 128 received, with output: '*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <>) not allowed'
+
+
+
+需要到项目 .git\config文件最后加入
+
+[user]
+    name = 你的名字
+    email = 你的邮箱
+	
+	
+问题 不能git clone url新获取一个ssh
+一般为ssh问题 
