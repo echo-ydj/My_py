@@ -65,5 +65,6 @@ fatal: empty ident name (for <>) not allowed'
     email = 你的邮箱
 	
 	
-问题 不能git clone url新获取一个ssh
-一般为ssh问题 
+问题 不能git clone url
+
+一般为ssh问题 重新获取一个ssh
