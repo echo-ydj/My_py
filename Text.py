@@ -517,15 +517,25 @@ n.t2()
 #         print("*****")
 
 
-from multiprocessing import process
-import time
+#注意import Process   Process(target=函数名)  大写P
+# from multiprocessing import Process
+# import time
+# def test():
+#     for i in range(4):
+#         print("*", end="")
+#         time.sleep(1)
+#
+# if __name__ == '__main__':
+#     p = Process(target=test)
+#     p.start()
+#     p.join()
 
-
-def test():
-    while True:
-        print("*", end="")
-        time.sleep(1)
-
-
-p = process(target=test)
-p.start()
+# from multiprocessing import Process
+#
+# def f(name):
+#     print('hello', name)
+#
+# if __name__ == '__main__':
+#     p = Process(target=f, args=('bob',))
+#     p.start()
+#     p.join()
