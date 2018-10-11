@@ -517,7 +517,7 @@ n.t2()
 #         print("*****")
 
 
-#注意import Process   Process(target=函数名)  大写P
+# 注意import Process   Process(target=函数名)  大写P
 # from multiprocessing import Process
 # import time
 # def test():
@@ -539,3 +539,37 @@ n.t2()
 #     p = Process(target=f, args=('bob',))
 #     p.start()
 #     p.join()
+
+
+# 进程池
+# from multiprocessing import Pool
+# import time
+# def test():
+#     print("///")
+#     time.sleep(2)
+# #注意进程池使用应在main内 负责报错
+# if __name__ == '__main__':
+#     po = Pool(3)
+#     po.apply_async(test)
+#     po.close()
+#     po.join()
+#     print("00000")
+
+
+
+#有参传入
+# import multiprocessing
+# import time
+# def func(msg):
+#     print('msg: ', msg)
+#     time.sleep(1)
+#     print('----')
+#
+# if __name__ == '__main__':
+#     pool = multiprocessing.Pool(processes=4)
+#     for i in range(10):
+#         msg = 'hello world %d' % i
+#         pool.apply_async(func, (msg, ))
+#
+#     pool.close()
+#     pool.join()
