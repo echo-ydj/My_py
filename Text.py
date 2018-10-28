@@ -556,8 +556,7 @@ n.t2()
 #     print("00000")
 
 
-
-#有参传入
+# 有参传入
 # import multiprocessing
 # import time
 # def func(msg):
@@ -572,4 +571,39 @@ n.t2()
 #         pool.apply_async(func, (msg, ))
 #
 #     pool.close()
-#     pool.join()
+#     pool.join()           #结束进程
+
+
+# 进程间的通信  Process
+# from multiprocessing import Queue
+#
+# q = Queue(3)        #
+# q.put()           #写入
+# q.get()           #获取
+# q.full()          #是否满
+# q.empty()         #是否存在
+
+# 进程池间的通信
+# from multiprocessing import Manager, Pool
+# # if __name__ == '__main__':
+# #     q = Manager().Queue()  # 使用Manger 中的Queue 初始化
+# #     po = Pool()
+# #     po.apply(函数,(参数,))
+# #     po.close()
+# #     po.join()
+
+
+# 线程完成多任务
+# import threading
+# import time
+#
+#
+# def test():
+#     print("*********")
+#     time.sleep(1)
+#
+#
+# if __name__ == '__main__':
+#     for i in range(0, 5):
+#         t = threading.Thread(target=test)
+#         t.start()
