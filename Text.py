@@ -594,7 +594,7 @@ n.t2()
 
 
 # 线程完成多任务
-# import threading
+# from threading import Thread
 # import time
 #
 #
@@ -605,5 +605,82 @@ n.t2()
 #
 # if __name__ == '__main__':
 #     for i in range(0, 5):
-#         t = threading.Thread(target=test)
+#         t = Thread(target=test)
 #         t.start()
+
+
+# 进程间不共享任何数据   线程共享全局变量
+# 线程间的全局变量间的传递
+# from threading import Thread
+# import time
+# num = 10
+# def add_num():
+#     global num
+#     num += 1
+#     print("num:{}".format(num))
+# def pr_num():
+#     global num
+#     num -= 1
+#     print("num:{}".format(num))
+# print("*-*-*-*-*-*-*-*")
+# a = Thread(target=add_num)
+# a.start()
+# time.sleep(1)
+# b = Thread(target=pr_num)
+# b.start()
+
+
+# 列表传递给线程
+# from threading import Thread
+# import time
+#
+# list_num = []
+#
+#
+# def list_a(list_num):
+#     list_num.append(10)
+#
+#
+# def list_s(list_num):
+#     print(list_num)
+#
+#
+# t1 = Thread(target=list_a, args=(list_num,))
+# t1.start()
+#
+# t2 = Thread(target=list_s, args=(list_num,))
+# t2.start()
+
+
+# 使用互斥锁
+# 两个线程抢着上锁 如果一个线程上锁成功另一个线程只能等该线程锁解开后 执行上锁
+from threading import Thread, Lock
+
+# 创建一把互斥锁 默认没有锁上
+lock_m = Lock()
+num = 0
+
+
+def add_num():
+    global num
+    lock_m.acquire()  # 上锁
+    for i in range(100):
+        num += 1
+    lock_m.release()  # 解锁
+    print("add_num---*---num:{}".format(num))
+
+
+def add2_num():
+    global num
+    lock_m.acquire()
+    for i in range(100):
+        num += 1
+    lock_m.release()
+    print("add2_num---*---num:{}".format(num))
+
+
+print("global---*---num:{}".format(num))
+t1 = Thread(target=add_num)
+t1.start()
+t2 = Thread(target=add2_num)
+t2.start()
