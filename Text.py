@@ -654,33 +654,33 @@ n.t2()
 
 # 使用互斥锁
 # 两个线程抢着上锁 如果一个线程上锁成功另一个线程只能等该线程锁解开后 执行上锁
-from threading import Thread, Lock
-
-# 创建一把互斥锁 默认没有锁上
-lock_m = Lock()
-num = 0
-
-
-def add_num():
-    global num
-    lock_m.acquire()  # 上锁
-    for i in range(100):
-        num += 1
-    lock_m.release()  # 解锁
-    print("add_num---*---num:{}".format(num))
-
-
-def add2_num():
-    global num
-    lock_m.acquire()
-    for i in range(100):
-        num += 1
-    lock_m.release()
-    print("add2_num---*---num:{}".format(num))
-
-
-print("global---*---num:{}".format(num))
-t1 = Thread(target=add_num)
-t1.start()
-t2 = Thread(target=add2_num)
-t2.start()
+# from threading import Thread, Lock
+#
+# # 创建一把互斥锁 默认没有锁上
+# lock_m = Lock()
+# num = 0
+#
+#
+# def add_num():
+#     global num
+#     lock_m.acquire()  # 上锁
+#     for i in range(100):
+#         num += 1
+#     lock_m.release()  # 解锁
+#     print("add_num---*---num:{}".format(num))
+#
+#
+# def add2_num():
+#     global num
+#     lock_m.acquire()
+#     for i in range(100):
+#         num += 1
+#     lock_m.release()
+#     print("add2_num---*---num:{}".format(num))
+#
+#
+# print("global---*---num:{}".format(num))
+# t1 = Thread(target=add_num)
+# t1.start()
+# t2 = Thread(target=add2_num)
+# t2.start()
