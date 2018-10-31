@@ -68,3 +68,8 @@ fatal: empty ident name (for <>) not allowed'
 问题 不能git clone url
 
 一般为ssh问题 重新获取一个ssh
+
+git pull  显示  Already up to date.   远程无文件处理
+
+输入  git checkout
+
