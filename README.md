@@ -71,5 +71,5 @@ fatal: empty ident name (for <>) not allowed'
 
 git pull  显示  Already up to date.   远程无文件处理
 
-输入  git checkout
+输入  git checkout    后恢复
 
