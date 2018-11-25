@@ -684,3 +684,96 @@ n.t2()
 # t1.start()
 # t2 = Thread(target=add2_num)
 # t2.start()
+
+
+# socket 通信
+# from socket import *
+#
+# # 创建套接字
+# tcpSocket =socket(socket.AF_INET, socket.SOCK_STREAM)
+# print("TCP套接")
+# # 准备接收方
+# sendAddr = ('127.0.0.1', 80)
+# package_f = input("数据:")
+# print(package_f)
+# #发送到指定电脑
+# tcpSocket.sendto(package_f.encode(), sendAddr)
+# #关闭套阶层
+# tcpSocket.close()
+
+# udp
+# from socket import *
+#
+# udpSocket = socket(AF_INET, SOCK_DGRAM)
+# addr = ("192.168.153.1", 137)
+#
+# # .encode()  将bytes  转 str
+# # 绑定端口  ""所有IP
+# bind_Adrr = ("", 8888)
+# udpSocket.bind(bind_Adrr)
+#
+# # 等待接收对方发送的数据(返回元组  a,b = recv_data  解元组)
+# recv_data = udpSocket.recvfrom(1024)  # 1024表示本次接收最大连接数
+#
+# print(recv_data)  # 显示接收数据
+#
+# # 发送方--发送信息
+# udpSocket.sendto("12".encode(), addr)
+# print(recv_data)
+# udpSocket.close()
+#
+# # #UDP
+# s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#
+# print("UDP套接")
+
+
+# 广播地址
+
+# import socket, sys
+#
+# dest = ("<broadcast>", 8888)
+# # 创建套接字
+# s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# # 如果s套接字需要广播发送数据,那么需要这句话
+# s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+# s.sendto("hh", dest)
+# s.close()
+
+
+# TCP
+# 服务器
+# from socket import *
+#
+# # 建立套接字
+# serverSocket = socket(AF_INET, SOCK_STREAM)
+# serverSocket.bind("", 8888)
+# 同时连个个数
+# serverSocket.listen(5)
+# # 返回元组
+# clientSocket, clientAdrr = serverSocket.accept()
+# # 接收数据
+# recvDat = clientSocket.recv(1024)
+# print(recvDat)
+# clientSocket.close()
+# serverSocket.close()
+
+
+# TCP客户端
+# from socket import *
+#
+# # 建立socket
+# clientsocket = socket(AF_INET, SOCK_STREAM)
+# # 客户端连接 传入元组
+# clientsocket.connect(("192.168.153.1", 80))
+# #注意 1.tcp客户端已经建立好了服务器 所以在以后的数据中不需要填写对方的IP地址和PORT   --->电话
+# #2.udp 在发送信息时要建立连接 所以每次发送时都要接受对方的IP 端口  ---->写信
+# # 数据
+# seadData = input("数据:")
+# # 发送数据
+# clientsocket.send(seadData.encode("utf-8"))
+# # 关闭socket
+# clientsocket.close()
+
+
+
