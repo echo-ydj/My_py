@@ -92,12 +92,78 @@ import requests
 #  4. 获取文本
 #       /a/text() 获取a标签下的文本
 #     / a // text()  获取a标签下的所有文本
-#
+
+
 ####  lxml
 #  安装 pip  install  lxml
 # 使用 python 中
 # from lxml import etree
 # element = erteee.HTML("html字符串")
-# element.xpath()
+# element.xpath(" //div[@class="asd"]/li")
+
+# r 的使用原始含义
+
+# import re
+# s="\\nas"
+# print(s)
+# print(re.match(r"\\n",s))
 
 
+#    |  匹配任意表达式
+#     (ab) 将括号中的字符作为一个分组
+#     \num 引用分组num匹配的字符串
+#     (?P<name>) 分组起别名
+#     (?P=name)  引用别名
+
+
+import re
+
+# s = "<html><h1>HELLO WORD</h1></html>"
+# p = r"<(.+)><(.+)>(.+)</\2></\1>$"
+# p1 = r"<(?P<key1>.+)><(?P<key2>.+)>.+</(?P=key2)></(?P=key1)>"   #注意 </ (?P=key)>  /在()外
+# r1 = re.match(p1, s)
+# print(r1)
+#
+# str = "<h1>NNNNN</h1>"
+# result = re.match(r"<(?P<key1>.+)>(.+)</(?P=key1)>$", str)
+# print(result)
+# print(result.group(1))
+
+# s = "<html><h1>HELLO WORD</h1></html>"
+# r=re.search(r"\s",s)
+# print(dir(r))
+
+
+# re.sub("替换字符(正则)","被替换为(可以为函数)","字符串")
+
+# def replace(result):
+#     num = int(result.group())
+#     return str(num + 50)
+#
+#
+# print(re.sub(r"\d+", replace, "python=100,php=0"))
+
+
+# str = """<div>
+# <p>12</p>
+# <p>qw</p>
+# <p>vv</p></div>"""
+#
+#
+# def replace(result):
+#     return result.group(2)
+#
+#
+# # print(re.sub(r"<(?P<key1>.+)>(.+)</(?P=key1)>", replace, str))
+#
+# print(re.sub("</?\w+>", "", str))
+
+
+# s = "this is num 12-10-23"
+# 贪婪模式  最多匹配
+# r =re.match(r"(.+)(\d+-\d+-\d+)", s)
+# print(r.group(2))       #  2-10-23
+
+# 非贪婪模式  后加?  匹配最少
+# r = re.match(r"(.+?)(\d+-\d+-\d+)", s)
+# print(r.group(2))  # 12-10-23
